@@ -1,9 +1,0 @@
-/home/rafael/workspace/kafka-producer/src/main/java/br/com/rnsiquera/messages/SendMessagesEvent.java
-/home/rafael/workspace/kafka-producer/src/main/java/br/com/rnsiquera/config/kafkaTopicConfig.java
-/home/rafael/workspace/kafka-producer/src/main/java/br/com/rnsiquera/config/KafkaStreamConfig.java
-/home/rafael/workspace/kafka-producer/src/main/java/br/com/rnsiquera/config/KafkaListeners.java
-/home/rafael/workspace/kafka-producer/src/main/java/br/com/rnsiquera/ProducerApplicaton.java
-/home/rafael/workspace/kafka-producer/src/main/java/br/com/rnsiquera/model/Event.java
-/home/rafael/workspace/kafka-producer/src/main/java/br/com/rnsiquera/config/KafkaConsumerConfig.java
-/home/rafael/workspace/kafka-producer/src/main/java/br/com/rnsiquera/MessageController.java
-/home/rafael/workspace/kafka-producer/src/main/java/br/com/rnsiquera/config/KafkaProducerConfig.java
