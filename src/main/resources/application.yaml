@@ -1,0 +1,12 @@
+spring:
+  profile: default
+  kafka:
+    bootstrap-servers: localhost://9092
+    producer:
+      key:
+        serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      key:
+        serializer: org.apache.kafka.common.serialization.ByteArrayDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.ByteArrayDeserializer

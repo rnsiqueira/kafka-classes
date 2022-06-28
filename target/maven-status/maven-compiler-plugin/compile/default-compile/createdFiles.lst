@@ -1,0 +1,9 @@
+br/com/rnsiquera/MessageController.class
+br/com/rnsiquera/config/KafkaListeners.class
+br/com/rnsiquera/config/KafkaProducerConfig.class
+br/com/rnsiquera/messages/SendMessagesEvent.class
+br/com/rnsiquera/config/kafkaTopicConfig.class
+br/com/rnsiquera/model/Event$EventBuilder.class
+br/com/rnsiquera/model/Event.class
+br/com/rnsiquera/config/KafkaConsumerConfig.class
+br/com/rnsiquera/ProducerApplicaton.class
