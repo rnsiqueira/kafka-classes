@@ -1,0 +1,6 @@
+/home/rafael/workspace/kafka-class/kafka-commons/src/main/java/br/com/rnsiquera/model/GsonDeserializer.java
+/home/rafael/workspace/kafka-class/kafka-commons/src/main/java/br/com/rnsiquera/model/Infomation.java
+/home/rafael/workspace/kafka-class/kafka-commons/src/main/java/br/com/rnsiquera/service/KafkaDispatcher.java
+/home/rafael/workspace/kafka-class/kafka-commons/src/main/java/br/com/rnsiquera/model/GsonSerializer.java
+/home/rafael/workspace/kafka-class/kafka-commons/src/main/java/br/com/rnsiquera/service/ConsumerFunction.java
+/home/rafael/workspace/kafka-class/kafka-commons/src/main/java/br/com/rnsiquera/service/KafkaService.java

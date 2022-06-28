@@ -1,0 +1,6 @@
+br/com/rnsiquera/model/GsonDeserializer.class
+br/com/rnsiquera/model/Infomation.class
+br/com/rnsiquera/service/ConsumerFunction.class
+br/com/rnsiquera/service/KafkaDispatcher.class
+br/com/rnsiquera/model/GsonSerializer.class
+br/com/rnsiquera/service/KafkaService.class

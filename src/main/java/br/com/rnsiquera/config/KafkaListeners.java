@@ -1,7 +1,7 @@
 package br.com.rnsiquera.config;
 
 
-import br.com.rnsiquera.model.Event;
+import br.com.rnsiquera.action.Event;
 import com.google.gson.Gson;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
