@@ -1,0 +1,3 @@
+br/com/rns/controller/OrdersController.class
+br/com/rns/controller/GenerateOrder.class
+br/com/rns/model/Order.class
