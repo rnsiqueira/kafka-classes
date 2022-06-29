@@ -17,7 +17,7 @@ public class CreateUserService {
 
     public CreateUserService() throws SQLException {
 
-        String url = "jdbc:sqlite:target/sql_database.db";
+        String url = "jdbc:sqlite:kafka-users/sql_database.db";
         connection = DriverManager.getConnection(url);
         try {
             connection.createStatement().execute("create table users (uuid varchar(255) primary key," +
@@ -31,7 +31,7 @@ public class CreateUserService {
 
     public static void main(String[] args) throws SQLException, InterruptedException {
         CreateUserService createUserService = new CreateUserService();
-        KafkaService products = new KafkaService(Arrays.asList("products"), createUserService::parse, CreateUserService.class.getName(), Order.class, Map.of(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, GsonDeserializer.class.getName()));
+        KafkaService products = new KafkaService(Arrays.asList("products"), createUserService::parse, CreateUserService.class.getSimpleName(), Order.class, Map.of(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, GsonDeserializer.class.getName()));
 
         products.run();
 
@@ -52,7 +52,7 @@ public class CreateUserService {
 
     }
 
-    private void insertNewUser( String email) throws SQLException {
+    private void insertNewUser(String email) throws SQLException {
         PreparedStatement sql = connection.prepareStatement("insert into users (uuid,email) " +
                 "values (?,?)");
 

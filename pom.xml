@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>br.com.rns</groupId>
-    <artifactId>kafka-class</artifactId>
+    <artifactId>kafka-classes</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
@@ -13,23 +13,23 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
     </properties>
-    <!--    <build>-->
-    <!--        <plugins>-->
-    <!--            <plugin>-->
-    <!--                <groupId>org.apache.maven.plugins</groupId>-->
-    <!--                <artifactId>maven-compiler-plugin</artifactId>-->
-    <!--                <configuration>-->
-    <!--                    <source>11</source>-->
-    <!--                    <target>11</target>-->
-    <!--                </configuration>-->
-    <!--            </plugin>-->
-    <!--            <plugin>-->
-    <!--                <groupId>org.springframework.boot</groupId>-->
-    <!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
 
-    <!--            </plugin>-->
-    <!--        </plugins>-->
-    <!--    </build>-->
+            </plugin>
+        </plugins>
+    </build>
     <modules>
         <module>kafka-products</module>
         <module>kafka-logs</module>
@@ -37,6 +37,7 @@
         <module>kafka-send-messages</module>
         <module>kafka-users</module>
         <module>kafka-http-server</module>
+        <module>kafka-generate-report</module>
     </modules>
 
     <dependencies>

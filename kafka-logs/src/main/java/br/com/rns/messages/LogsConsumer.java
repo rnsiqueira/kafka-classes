@@ -1,4 +1,4 @@
-package br.com.rnsiquera.messages;
+package br.com.rns.messages;
 
 import br.com.rnsiquera.service.KafkaService;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
@@ -13,7 +13,7 @@ public class LogsConsumer {
 
     public static void main(String[] args) throws InterruptedException {
         LogsConsumer logsConsumer = new LogsConsumer();
-        KafkaService kafkaService = new KafkaService(Pattern.compile("produ.*||info.*"), LogsConsumer::parse, LogsConsumer.class.getName()
+        KafkaService kafkaService = new KafkaService(Pattern.compile("produ.*||info.*"), LogsConsumer::parse, LogsConsumer.class.getSimpleName()
                 , String.class,
                 Map.of(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName()));
         kafkaService.run();

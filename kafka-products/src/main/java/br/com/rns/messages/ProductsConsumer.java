@@ -1,4 +1,4 @@
-package br.com.rnsiquera.messages;
+package br.com.rns.messages;
 
 import br.com.rns.model.GsonDeserializer;
 import br.com.rns.model.Order;
@@ -17,7 +17,11 @@ public class ProductsConsumer {
 
     public static void main(String[] args) throws InterruptedException {
         ProductsConsumer serviceConsumer = new ProductsConsumer();
-        KafkaService products = new KafkaService(Arrays.asList("products"), serviceConsumer::parse, ProductsConsumer.class.getName(), Order.class, Map.of(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, GsonDeserializer.class.getName()));
+        KafkaService products = new KafkaService(Arrays.asList("products"),
+                serviceConsumer::parse,
+                ProductsConsumer.class.getSimpleName(),
+                Order.class,
+                Map.of(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, GsonDeserializer.class.getName()));
 
         products.run();
 

@@ -1,4 +1,4 @@
-package br.com.rns.controller;
+package br.com.rns.service;
 
 import br.com.rns.model.Order;
 import br.com.rnsiquera.service.KafkaDispatcher;
@@ -13,8 +13,8 @@ import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 
 public class GenerateOrder extends HttpServlet {
-    private KafkaDispatcher products = new KafkaDispatcher<>();
-    private KafkaDispatcher informations = new KafkaDispatcher<>();
+    private KafkaDispatcher<Order> products = new KafkaDispatcher<>();
+    private KafkaDispatcher<String> informations = new KafkaDispatcher<>();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
