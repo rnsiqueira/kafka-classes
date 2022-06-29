@@ -14,7 +14,8 @@ public class LogsConsumer {
     public static void main(String[] args) throws InterruptedException {
         LogsConsumer logsConsumer = new LogsConsumer();
         KafkaService kafkaService = new KafkaService(Pattern.compile("produ.*||info.*"), LogsConsumer::parse, LogsConsumer.class.getName()
-                , String.class, Map.of(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName()));
+                , String.class,
+                Map.of(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName()));
         kafkaService.run();
 
 

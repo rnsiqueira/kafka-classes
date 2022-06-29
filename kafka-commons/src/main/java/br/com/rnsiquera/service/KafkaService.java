@@ -1,6 +1,6 @@
 package br.com.rnsiquera.service;
 
-import br.com.rnsiquera.model.GsonDeserializer;
+import br.com.rns.model.GsonDeserializer;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.serialization.StringDeserializer;
@@ -45,6 +45,8 @@ public class KafkaService<T> implements Closeable {
                     try {
                         parse.consumer(r);
                     } catch (ExecutionException e) {
+                        System.out.println(e.getMessage());
+                    } catch (Exception e) {
                         System.out.println(e.getMessage());
                     }
                 }

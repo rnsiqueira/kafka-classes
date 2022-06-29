@@ -35,6 +35,8 @@
         <module>kafka-logs</module>
         <module>kafka-commons</module>
         <module>kafka-send-messages</module>
+        <module>kafka-users</module>
+        <module>kafka-http-server</module>
     </modules>
 
     <dependencies>

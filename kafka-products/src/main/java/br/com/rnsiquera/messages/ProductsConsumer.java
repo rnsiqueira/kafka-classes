@@ -1,7 +1,7 @@
 package br.com.rnsiquera.messages;
 
-import br.com.rnsiquera.model.GsonDeserializer;
-import br.com.rnsiquera.model.Order;
+import br.com.rns.model.GsonDeserializer;
+import br.com.rns.model.Order;
 import br.com.rnsiquera.service.KafkaDispatcher;
 import br.com.rnsiquera.service.KafkaService;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
@@ -34,17 +34,21 @@ public class ProductsConsumer {
         System.out.println(record.offset());
         Order order = record.value();
 
-        if (order.getAmount().compareTo(new BigDecimal("10500")) >= 0) {
+        if (isFraud(order)) {
             System.out.println("Product is with amount invalid!!!!!");
             System.out.println(order);
-            dispatcher.send("product_fraud", order.getUserId(), order);
+            dispatcher.send("product_fraud", order.getEmail(), order);
         } else {
             System.out.println("Product is Ok!");
             System.out.println(order);
-            dispatcher.send("product_sent", order.getUserId(), order);
+            dispatcher.send("product_sent", order.getEmail(), order);
         }
 
 
+    }
+
+    private boolean isFraud(Order order) {
+        return order.getAmount().compareTo(new BigDecimal("6500")) >= 0;
     }
 
     private KafkaDispatcher dispatcher = new KafkaDispatcher();

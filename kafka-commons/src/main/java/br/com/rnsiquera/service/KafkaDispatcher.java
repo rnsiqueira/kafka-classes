@@ -1,6 +1,6 @@
 package br.com.rnsiquera.service;
 
-import br.com.rnsiquera.model.GsonSerializer;
+import br.com.rns.model.GsonSerializer;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
