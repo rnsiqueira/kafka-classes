@@ -1,6 +1,7 @@
 package br.com.rns.service;
 
 import br.com.rns.model.GsonDeserializer;
+import br.com.rns.model.Message;
 import br.com.rns.model.Order;
 import br.com.rnsiquera.service.KafkaService;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
@@ -38,11 +39,11 @@ public class CreateUserService {
 
     }
 
-    private void parse(ConsumerRecord<String, Order> record) throws SQLException {
+    private void parse(ConsumerRecord<String, Message<Order>> record) throws SQLException {
         System.out.println("-------------------");
         System.out.println("Processing new order, checking for new user");
-        System.out.println(record.value());
-        Order order = record.value();
+        System.out.println(record.value().getPayload());
+        Order order = record.value().getPayload();
         if (isNewuser(order.getEmail())) {
             insertNewUser(order.getEmail());
 

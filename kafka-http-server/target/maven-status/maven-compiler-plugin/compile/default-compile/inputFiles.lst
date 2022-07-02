@@ -1,3 +1,5 @@
+/home/rafael/workspace/kafka-classes/kafka-http-server/src/main/java/br/com/rns/service/GenerateOrder.java
 /home/rafael/workspace/kafka-classes/kafka-http-server/src/main/java/br/com/rns/controller/OrdersController.java
-/home/rafael/workspace/kafka-classes/kafka-http-server/src/main/java/br/com/rns/controller/GenerateOrder.java
+/home/rafael/workspace/kafka-classes/kafka-http-server/src/main/java/br/com/rns/model/User.java
 /home/rafael/workspace/kafka-classes/kafka-http-server/src/main/java/br/com/rns/model/Order.java
+/home/rafael/workspace/kafka-classes/kafka-http-server/src/main/java/br/com/rns/service/GenerateReport.java

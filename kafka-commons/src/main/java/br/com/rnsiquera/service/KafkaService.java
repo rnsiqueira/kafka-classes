@@ -1,6 +1,7 @@
 package br.com.rnsiquera.service;
 
 import br.com.rns.model.GsonDeserializer;
+import br.com.rns.model.Message;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.serialization.StringDeserializer;
@@ -17,10 +18,10 @@ import java.util.regex.Pattern;
 
 public class KafkaService<T> implements Closeable {
 
-    private final KafkaConsumer<String, T> consumer;
+    private final KafkaConsumer<String, Message<T>> consumer;
     private final ConsumerFunction parse;
 
-    public KafkaService(List<String> topics, ConsumerFunction parse, String group, Class<T> type, Map<String, String> properties) {
+    public KafkaService(List<String> topics, ConsumerFunction<T> parse, String group, Class<T> type, Map<String, String> properties) {
         this.consumer = new KafkaConsumer<>(getProperties(group, type, properties));
         this.consumer.subscribe(topics);
         this.parse = parse;
@@ -28,7 +29,7 @@ public class KafkaService<T> implements Closeable {
 
     }
 
-    public KafkaService(Pattern topics, ConsumerFunction parse, String group, Class<T> type, Map<String, String> properties) {
+    public KafkaService(Pattern topics, ConsumerFunction<T> parse, String group, Class<T> type, Map<String, String> properties) {
         this.consumer = new KafkaConsumer<>(getProperties(group, type, properties));
         this.consumer.subscribe(topics);
         this.parse = parse;
@@ -64,7 +65,6 @@ public class KafkaService<T> implements Closeable {
         properties.put(ConsumerConfig.GROUP_ID_CONFIG, group);
         properties.put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, 5);
         properties.put(ConsumerConfig.CLIENT_ID_CONFIG, UUID.randomUUID().toString());
-        properties.put(GsonDeserializer.TYPE_CONFIG, type.getName());
         properties.putAll(overrideProperties);
         return properties;
     }

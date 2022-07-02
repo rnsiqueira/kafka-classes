@@ -1,5 +1,6 @@
 package br.com.rns.service;
 
+import br.com.rns.model.Message;
 import br.com.rns.model.User;
 import br.com.rnsiquera.service.KafkaDispatcher;
 import br.com.rnsiquera.service.KafkaService;
@@ -36,14 +37,14 @@ public class BatchSendMessageService {
         batch_service.run();
     }
 
-    private void parse(ConsumerRecord<String, String> record) throws ExecutionException, InterruptedException, SQLException {
+    private void parse(ConsumerRecord<String, Message<String>> record) throws ExecutionException, InterruptedException, SQLException {
         System.out.println("--------------------");
         System.out.println("Processing new batch");
-        List<User> users = getAllUsers();
-        for (User user : users) {
-            String topic = record.value();
+        System.out.println("Topic: "+record.value().getPayload());
+        for (User user : getAllUsers()) {
+            String topic = record.value().getPayload();
             System.out.println(topic);
-            userDispatcher.send(record.value().toString(), user.getId(), user);
+            userDispatcher.send(record.value().getPayload(), user.getId(), user);
         }
     }
 

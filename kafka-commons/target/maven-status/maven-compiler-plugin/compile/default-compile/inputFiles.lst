@@ -1,6 +1,9 @@
 /home/rafael/workspace/kafka-classes/kafka-commons/src/main/java/br/com/rns/model/GsonSerializer.java
 /home/rafael/workspace/kafka-classes/kafka-commons/src/main/java/br/com/rnsiquera/service/KafkaDispatcher.java
 /home/rafael/workspace/kafka-classes/kafka-commons/src/main/java/br/com/rnsiquera/service/ConsumerFunction.java
+/home/rafael/workspace/kafka-classes/kafka-commons/src/main/java/br/com/rns/model/MessageAdapter.java
 /home/rafael/workspace/kafka-classes/kafka-commons/src/main/java/br/com/rns/model/GsonDeserializer.java
+/home/rafael/workspace/kafka-classes/kafka-commons/src/main/java/br/com/rns/model/Message.java
+/home/rafael/workspace/kafka-classes/kafka-commons/src/main/java/br/com/rns/model/CorrelationId.java
 /home/rafael/workspace/kafka-classes/kafka-commons/src/main/java/br/com/rns/model/Infomation.java
 /home/rafael/workspace/kafka-classes/kafka-commons/src/main/java/br/com/rnsiquera/service/KafkaService.java

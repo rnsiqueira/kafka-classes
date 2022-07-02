@@ -1,6 +1,7 @@
 package br.com.rns.messages;
 
 import br.com.rns.model.GsonDeserializer;
+import br.com.rns.model.Message;
 import br.com.rns.model.Order;
 import br.com.rnsiquera.service.KafkaDispatcher;
 import br.com.rnsiquera.service.KafkaService;
@@ -28,15 +29,15 @@ public class ProductsConsumer {
 
     }
 
-    private void parse(ConsumerRecord<String, Order> record) throws ExecutionException, InterruptedException {
+    private void parse(ConsumerRecord<String, Message<Order>> record) throws ExecutionException, InterruptedException {
 
 
         System.out.println("----------Receding products-------------");
         System.out.println(record.key());
-        System.out.println(record.value());
+        System.out.println(record.value().getPayload());
         System.out.println(record.partition());
         System.out.println(record.offset());
-        Order order = record.value();
+        Order order = record.value().getPayload();
 
         if (isFraud(order)) {
             System.out.println("Product is with amount invalid!!!!!");

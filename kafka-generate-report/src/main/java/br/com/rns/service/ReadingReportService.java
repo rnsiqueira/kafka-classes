@@ -1,6 +1,7 @@
 package br.com.rns.service;
 
 import br.com.rns.model.GsonDeserializer;
+import br.com.rns.model.Message;
 import br.com.rns.model.User;
 import br.com.rnsiquera.service.KafkaService;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
@@ -25,10 +26,10 @@ public class ReadingReportService {
         report_service.run();
     }
 
-    private void parse(ConsumerRecord<String, User> record) throws IOException {
+    private void parse(ConsumerRecord<String, Message<User>> record) throws IOException {
         System.out.println("-----------------");
-        System.out.println("Processing report for: " + record.value());
-        User user = record.value();
+        System.out.println("Processing report for: " + record.value().getPayload());
+        User user = record.value().getPayload();
         var target = new File(user.getReportPath());
         IO.copyTo(SOURCE, target);
         IO.append(target, "Create for " + String.valueOf(user.getId()));

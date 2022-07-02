@@ -1,2 +1,4 @@
-br/com/rns/service/CreateUserService.class
+br/com/rns/model/User.class
+br/com/rns/service/BatchSendMessageService.class
 br/com/rns/model/Order.class
+br/com/rns/service/CreateUserService.class

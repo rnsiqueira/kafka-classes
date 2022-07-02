@@ -1,2 +1,4 @@
 /home/rafael/workspace/kafka-classes/kafka-users/src/main/java/br/com/rns/service/CreateUserService.java
+/home/rafael/workspace/kafka-classes/kafka-users/src/main/java/br/com/rns/model/User.java
 /home/rafael/workspace/kafka-classes/kafka-users/src/main/java/br/com/rns/model/Order.java
+/home/rafael/workspace/kafka-classes/kafka-users/src/main/java/br/com/rns/service/BatchSendMessageService.java

@@ -1,3 +1,5 @@
-br/com/rns/controller/OrdersController.class
-br/com/rns/controller/GenerateOrder.class
+br/com/rns/model/User.class
 br/com/rns/model/Order.class
+br/com/rns/service/GenerateOrder.class
+br/com/rns/service/GenerateReport.class
+br/com/rns/controller/OrdersController.class

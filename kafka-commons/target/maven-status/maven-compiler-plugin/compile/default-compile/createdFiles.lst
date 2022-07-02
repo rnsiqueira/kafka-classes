@@ -1,6 +1,9 @@
+br/com/rns/model/CorrelationId.class
+br/com/rns/model/GsonSerializer.class
+br/com/rns/model/MessageAdapter.class
+br/com/rns/model/Message.class
 br/com/rns/model/GsonDeserializer.class
 br/com/rnsiquera/service/ConsumerFunction.class
 br/com/rnsiquera/service/KafkaDispatcher.class
 br/com/rns/model/Infomation.class
 br/com/rnsiquera/service/KafkaService.class
-br/com/rns/model/GsonSerializer.class

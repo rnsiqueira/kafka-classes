@@ -1,6 +1,8 @@
 package br.com.rnsiquera.service;
 
+import br.com.rns.model.CorrelationId;
 import br.com.rns.model.GsonSerializer;
+import br.com.rns.model.Message;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
@@ -14,8 +16,7 @@ import java.util.concurrent.ExecutionException;
 public class KafkaDispatcher<T> implements Closeable {
 
 
-    private KafkaProducer<String, T> producer = new KafkaProducer<>(properties());
-    private ProducerRecord<String, T> record;
+    private KafkaProducer<String, Message<T>> producer = new KafkaProducer<>(properties());
 
     public static Properties properties() {
         Properties properties = new Properties();
@@ -26,8 +27,9 @@ public class KafkaDispatcher<T> implements Closeable {
         return properties;
     }
 
-    public void send(String topic, String key, T message) throws ExecutionException, InterruptedException {
-        record = new ProducerRecord<>(topic, key, message);
+    public void send(String topic, String key, T payload) throws ExecutionException, InterruptedException {
+        var message = new Message<>(new CorrelationId(), payload);
+        var record = new ProducerRecord<>(topic, key, message);
         producer.send(record, (data, ex) -> {
             if (ex != null) {
                 ex.printStackTrace();
