@@ -1,5 +1,6 @@
 package br.com.rns.service;
 
+import br.com.rns.model.CorrelationId;
 import br.com.rns.model.Order;
 import br.com.rnsiquera.service.KafkaDispatcher;
 
@@ -26,8 +27,8 @@ public class GenerateOrder extends HttpServlet {
 
         Order order = new Order(orderId, new BigDecimal(amount), email);
         try {
-            products.send("products", order.getEmail(), order);
-            informations.send("information", order.getEmail(), "New Information");
+            products.send("products", order.getEmail(), order, new CorrelationId(GenerateOrder.class.getSimpleName()));
+            informations.send("information", order.getEmail(), "New Information", new CorrelationId(GenerateOrder.class.getSimpleName()));
         } catch (ExecutionException e) {
             throw new ServletException(e);
         } catch (InterruptedException e) {

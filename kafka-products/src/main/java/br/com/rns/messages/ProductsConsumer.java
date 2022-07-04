@@ -42,11 +42,11 @@ public class ProductsConsumer {
         if (isFraud(order)) {
             System.out.println("Product is with amount invalid!!!!!");
             System.out.println(order);
-            dispatcher.send("product_fraud", order.getEmail(), order);
+            dispatcher.send("product_fraud", order.getEmail(), order, record.value().getCorrelationId().continueIdWith(ProductsConsumer.class.getSimpleName()));
         } else {
             System.out.println("Product is Ok!");
             System.out.println(order);
-            dispatcher.send("product_sent", order.getEmail(), order);
+            dispatcher.send("product_sent", order.getEmail(), order, record.value().getCorrelationId().continueIdWith(ProductsConsumer.class.getSimpleName()));
         }
 
 

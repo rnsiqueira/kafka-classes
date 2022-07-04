@@ -1,5 +1,6 @@
 package br.com.rns.service;
 
+import br.com.rns.model.CorrelationId;
 import br.com.rns.model.Message;
 import br.com.rns.model.User;
 import br.com.rnsiquera.service.KafkaDispatcher;
@@ -40,11 +41,11 @@ public class BatchSendMessageService {
     private void parse(ConsumerRecord<String, Message<String>> record) throws ExecutionException, InterruptedException, SQLException {
         System.out.println("--------------------");
         System.out.println("Processing new batch");
-        System.out.println("Topic: "+record.value().getPayload());
+        System.out.println("Topic: " + record.value().getPayload());
         for (User user : getAllUsers()) {
             String topic = record.value().getPayload();
             System.out.println(topic);
-            userDispatcher.send(record.value().getPayload(), user.getId(), user);
+            userDispatcher.send(record.value().getPayload(), user.getId(), user, record.value().getCorrelationId().continueIdWith(BatchSendMessageService.class.getSimpleName()));
         }
     }
 
