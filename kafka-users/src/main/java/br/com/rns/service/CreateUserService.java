@@ -1,9 +1,9 @@
 package br.com.rns.service;
 
-import br.com.rns.model.GsonDeserializer;
+import br.com.rns.service.consumer.GsonDeserializer;
 import br.com.rns.model.Message;
 import br.com.rns.model.Order;
-import br.com.rnsiquera.service.KafkaService;
+import br.com.rns.service.consumer.KafkaServiceConsumer;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 
@@ -32,7 +32,7 @@ public class CreateUserService {
 
     public static void main(String[] args) throws SQLException, InterruptedException {
         CreateUserService createUserService = new CreateUserService();
-        KafkaService products = new KafkaService(Arrays.asList("products"), createUserService::parse, CreateUserService.class.getSimpleName(), Order.class, Map.of(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, GsonDeserializer.class.getName()));
+        KafkaServiceConsumer products = new KafkaServiceConsumer(Arrays.asList("products"), createUserService::parse, CreateUserService.class.getSimpleName(), Map.of(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, GsonDeserializer.class.getName()));
 
         products.run();
 

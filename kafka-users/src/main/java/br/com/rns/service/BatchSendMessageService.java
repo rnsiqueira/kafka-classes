@@ -1,10 +1,9 @@
 package br.com.rns.service;
 
-import br.com.rns.model.CorrelationId;
 import br.com.rns.model.Message;
 import br.com.rns.model.User;
-import br.com.rnsiquera.service.KafkaDispatcher;
-import br.com.rnsiquera.service.KafkaService;
+import br.com.rns.service.dispatcher.KafkaDispatcher;
+import br.com.rns.service.consumer.KafkaServiceConsumer;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 
 import java.sql.*;
@@ -32,9 +31,9 @@ public class BatchSendMessageService {
 
     public static void main(String[] args) throws SQLException, InterruptedException {
         var batchSendMessageService = new BatchSendMessageService();
-        KafkaService batch_service = new KafkaService(Arrays.asList("send_message_to_all_users"), batchSendMessageService::parse,
+        KafkaServiceConsumer batch_service = new KafkaServiceConsumer(Arrays.asList("send_message_to_all_users"), batchSendMessageService::parse,
                 BatchSendMessageService.class.getSimpleName(),
-                String.class, Map.of());
+                Map.of());
         batch_service.run();
     }
 

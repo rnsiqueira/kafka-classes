@@ -12,6 +12,7 @@
         <module name="kafka-http-server" />
         <module name="kafka-generate-report" />
         <module name="kafka-users" />
+        <module name="kafka-email-service" />
         <module name="kafka-commons" />
         <module name="kafka-send-messages" />
       </profile>

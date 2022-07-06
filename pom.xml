@@ -38,6 +38,7 @@
         <module>kafka-users</module>
         <module>kafka-http-server</module>
         <module>kafka-generate-report</module>
+        <module>kafka-email-service</module>
     </modules>
 
     <dependencies>
