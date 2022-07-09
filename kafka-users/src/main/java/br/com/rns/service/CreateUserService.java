@@ -1,18 +1,15 @@
 package br.com.rns.service;
 
-import br.com.rns.service.consumer.GsonDeserializer;
 import br.com.rns.model.Message;
 import br.com.rns.model.Order;
-import br.com.rns.service.consumer.KafkaServiceConsumer;
-import org.apache.kafka.clients.consumer.ConsumerConfig;
+import br.com.rns.service.consumer.ConsumerService;
+import br.com.rns.service.consumer.ServiceRunner;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 
 import java.sql.*;
-import java.util.Arrays;
-import java.util.Map;
 import java.util.UUID;
 
-public class CreateUserService {
+public class CreateUserService implements ConsumerService<Order> {
 
     private final Connection connection;
 
@@ -31,15 +28,12 @@ public class CreateUserService {
     }
 
     public static void main(String[] args) throws SQLException, InterruptedException {
-        CreateUserService createUserService = new CreateUserService();
-        KafkaServiceConsumer products = new KafkaServiceConsumer(Arrays.asList("products"), createUserService::parse, CreateUserService.class.getSimpleName(), Map.of(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, GsonDeserializer.class.getName()));
-
-        products.run();
+        new ServiceRunner(CreateUserService::new).start(1);
 
 
     }
 
-    private void parse(ConsumerRecord<String, Message<Order>> record) throws SQLException {
+    public void parse(ConsumerRecord<String, Message<Order>> record) throws SQLException {
         System.out.println("-------------------");
         System.out.println("Processing new order, checking for new user");
         System.out.println(record.value().getPayload());
@@ -51,6 +45,16 @@ public class CreateUserService {
         }
 
 
+    }
+
+    @Override
+    public String getTopic() {
+        return "products";
+    }
+
+    @Override
+    public String getGroup() {
+        return CreateUserService.class.getSimpleName();
     }
 
     private void insertNewUser(String email) throws SQLException {
